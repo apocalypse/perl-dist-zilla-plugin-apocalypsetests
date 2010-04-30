@@ -24,6 +24,11 @@ my $build = Module::Build->new(
 		'Test::More'			=> '0.94',
 		'Test::Apocalypse'		=> '0.10',
 
+		# To use Dzil
+		'Dist::Zilla::Role::FileMunger'		=> '2.101170',
+		'Dist::Zilla::Plugin::InlineFiles'	=> '2.101170',
+		'Moose'				=> '1.01',
+
 		# we need a recent perl
 		'perl'				=> '5.008',
 	},

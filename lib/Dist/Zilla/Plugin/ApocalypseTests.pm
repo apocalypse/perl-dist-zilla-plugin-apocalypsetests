@@ -58,12 +58,6 @@ __PACKAGE__->meta->make_immutable;
 
 Dist::Zilla::Plugin::ApocalypseTests - Creates the Test::Apocalypse testfile for Dist::Zilla
 
-=head1 SYNOPSIS
-
-In your dist.ini:
-
-	[ApocalypseTests]
-
 =head1 DESCRIPTION
 
 This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing
@@ -74,6 +68,9 @@ the following files:
 =item * t/apocalypse.t - Runs the dist through Test::Apocalypse
 
 For more information on what the test does, please look at L<Test::Apocalypse>.
+
+	# In your dist.ini:
+	[ApocalypseTests]
 
 =back
 
