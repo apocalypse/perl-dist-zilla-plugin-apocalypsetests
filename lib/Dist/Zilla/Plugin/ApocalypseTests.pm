@@ -3,8 +3,8 @@ use strict; use warnings;
 our $VERSION = '0.01';
 
 use Moose;
-extends 'Dist::Zilla::Plugin::InlineFiles';
-with    'Dist::Zilla::Role::FileMunger';
+extends	'Dist::Zilla::Plugin::InlineFiles';
+with	'Dist::Zilla::Role::FileMunger';
 
 # -- attributes
 
