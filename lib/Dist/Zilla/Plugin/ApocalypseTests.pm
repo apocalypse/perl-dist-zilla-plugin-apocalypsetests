@@ -9,15 +9,15 @@ with    'Dist::Zilla::Role::FileMunger';
 # -- attributes
 
 has allow => (
-  is => 'ro',
-  isa => 'Str',
-  predicate => 'has_allow',
+	is => 'ro',
+	isa => 'Str',
+	predicate => 'has_allow',
 );
 
 has deny => (
-  is => 'ro',
-  isa => 'Str',
-  predicate => 'has_deny',
+	is => 'ro',
+	isa => 'Str',
+	predicate => 'has_deny',
 );
 
 # -- public methods
