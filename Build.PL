@@ -19,18 +19,21 @@ my $build = Module::Build->new(
 
 	'test_files'		=> 't/*.t',
 
+	'build_requires'	=> {
+		'Test::More'	=> '0.94',
+	},
+
 	'requires'		=> {
-		# Test stuff
-		'Test::More'			=> '0.94',
-		'Test::Apocalypse'		=> '0.10',
+		# The main reason why we're here :)
+		'Test::Apocalypse'			=> '0.10',
 
 		# To use Dzil
 		'Dist::Zilla::Role::FileMunger'		=> '2.101170',
 		'Dist::Zilla::Plugin::InlineFiles'	=> '2.101170',
-		'Moose'				=> '1.01',
+		'Moose'					=> '1.01',
 
 		# we need a recent perl
-		'perl'				=> '5.008',
+		'perl'					=> '5.008',
 	},
 
 	# include the standard stuff in META.yml

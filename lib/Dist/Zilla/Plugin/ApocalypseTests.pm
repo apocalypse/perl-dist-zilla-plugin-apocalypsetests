@@ -1,28 +1,27 @@
 package Dist::Zilla::Plugin::ApocalypseTests;
 use strict; use warnings;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
-use Moose;
-extends	'Dist::Zilla::Plugin::InlineFiles';
-with	'Dist::Zilla::Role::FileMunger';
+use Moose 1.01;
 
-# -- attributes
+# TODO wait for improved Moose that allows "with 'Foo::Bar' => { -version => 1.23 };"
+use Dist::Zilla::Plugin::InlineFiles 2.101170;
+use Dist::Zilla::Role::FileMunger 2.101170;
+extends 'Dist::Zilla::Plugin::InlineFiles';
+with 'Dist::Zilla::Role::FileMunger';
 
 has allow => (
 	is => 'ro',
 	isa => 'Str',
-	predicate => 'has_allow',
+	predicate => '_has_allow',
 );
 
 has deny => (
 	is => 'ro',
 	isa => 'Str',
-	predicate => 'has_deny',
+	predicate => '_has_deny',
 );
 
-# -- public methods
-
-# called by the filemunger role
 sub munge_file {
 	my ($self, $file) = @_;
 
@@ -31,14 +30,14 @@ sub munge_file {
 	# replace strings in the file
 	my $content = $file->content;
 	my( $allow, $deny );
-	if ( $self->has_allow ) {
+	if ( $self->_has_allow ) {
 		$allow = "allow => '" . $self->allow . "',\n";
 	} else {
 		$allow = '';
 	}
 	$content =~ s/ALLOW/$allow/;
 
-	if ( $self->has_deny ) {
+	if ( $self->_has_deny ) {
 		$deny = "deny => '" . $self->deny . "',\n";
 	} else {
 		$deny = '';
@@ -53,6 +52,8 @@ __PACKAGE__->meta->make_immutable;
 1;
 
 =pod
+
+=for stopwords AnnoCPAN CPAN CPANTS Kwalitee RT dist
 
 =head1 NAME
 
