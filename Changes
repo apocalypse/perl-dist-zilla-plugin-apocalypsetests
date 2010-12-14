@@ -2,6 +2,9 @@ Revision history for Dist::Zilla::Plugin::ApocalypseTests
 
 {{$NEXT}}
 
+1.000
+	Released: 2010-12-14 03:40:32 UTC
+
 	Converted to Dist::Zilla for the release process!
 
 0.01
