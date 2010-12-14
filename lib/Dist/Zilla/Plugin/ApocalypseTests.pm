@@ -1,20 +1,33 @@
 package Dist::Zilla::Plugin::ApocalypseTests;
-use strict; use warnings;
-our $VERSION = '0.02';
 
-use Moose 1.01;
+# ABSTRACT: Creates the Test::Apocalypse testfile for Dist::Zilla
 
-# TODO wait for improved Moose that allows "with 'Foo::Bar' => { -version => 1.23 };"
-use Dist::Zilla::Plugin::InlineFiles 2.101170;
-use Dist::Zilla::Role::FileMunger 2.101170;
-extends 'Dist::Zilla::Plugin::InlineFiles';
-with 'Dist::Zilla::Role::FileMunger';
+use Moose 1.03;
+
+extends 'Dist::Zilla::Plugin::InlineFiles' => { -version => '2.101170' };
+with 'Dist::Zilla::Role::FileMunger' => { -version => '2.101170' };
+
+=attr allow
+
+This option will be passed directly to L<Test::Apocalypse> to control which sub-tests you want to run.
+
+The default is nothing.
+
+=cut
 
 has allow => (
 	is => 'ro',
 	isa => 'Str',
 	predicate => '_has_allow',
 );
+
+=attr deny
+
+This option will be passed directly to L<Test::Apocalypse> to control which sub-tests you want to run.
+
+The default is nothing.
+
+=cut
 
 has deny => (
 	is => 'ro',
@@ -53,11 +66,9 @@ __PACKAGE__->meta->make_immutable;
 
 =pod
 
-=for stopwords AnnoCPAN CPAN CPANTS Kwalitee RT dist
+=for Pod::Coverage munge_file
 
-=head1 NAME
-
-Dist::Zilla::Plugin::ApocalypseTests - Creates the Test::Apocalypse testfile for Dist::Zilla
+=for stopwords dist
 
 =head1 DESCRIPTION
 
@@ -75,94 +86,9 @@ For more information on what the test does, please look at L<Test::Apocalypse>.
 
 =back
 
-This plugin accepts the following options:
-
-=over 4
-
-=item * allow
-
-This option will be passed directly to L<Test::Apocalypse> to control which sub-tests you want to run.
-
-=item * deny
-
-This option will be passed directly to L<Test::Apocalypse> to control which sub-tests you want to run.
-
-=back
-
 =head1 SEE ALSO
-
-L<Dist::Zilla>
-
-L<Test::Apocalypse>
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-	perldoc Dist::Zilla::Plugin::ApocalypseTests
-
-=head2 Websites
-
-=over 4
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Dist-Zilla-Plugin-ApocalypseTests>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Dist-Zilla-Plugin-ApocalypseTests>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Dist-Zilla-Plugin-ApocalypseTests>
-
-=item * CPAN Forum
-
-L<http://cpanforum.com/dist/Dist-Zilla-Plugin-ApocalypseTests>
-
-=item * RT: CPAN's Request Tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Dist-Zilla-Plugin-ApocalypseTests>
-
-=item * CPANTS Kwalitee
-
-L<http://cpants.perl.org/dist/overview/Dist-Zilla-Plugin-ApocalypseTests>
-
-=item * CPAN Testers Results
-
-L<http://cpantesters.org/distro/D/Dist-Zilla-Plugin-ApocalypseTests.html>
-
-=item * CPAN Testers Matrix
-
-L<http://matrix.cpantesters.org/?dist=Dist-Zilla-Plugin-ApocalypseTests>
-
-=item * Git Source Code Repository
-
-L<http://github.com/apocalypse/perl-dist-zilla-plugin-apocalypsetests>
-
-=back
-
-=head2 Bugs
-
-Please report any bugs or feature requests to C<bug-dist-zilla-plugin-apocalypsetests at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dist-Zilla-Plugin-ApocalypseTests>.  I will be
-notified, and then you'll automatically be notified of progress on your bug as I make changes.
-
-=head1 AUTHOR
-
-Apocalypse E<lt>apocal@cpan.orgE<gt>
-
-Props goes out to JQUELIN for writing the L<Dist::Zilla::Plugin::CompileTests> which was the base for this module.
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2010 by Apocalypse
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-The full text of the license can be found in the LICENSE file included with this module.
+Dist::Zilla
+Test::Apocalypse
 
 =cut
 
