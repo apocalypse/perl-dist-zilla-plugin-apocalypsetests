@@ -7,6 +7,11 @@ use Moose 1.03;
 extends 'Dist::Zilla::Plugin::InlineFiles' => { -version => '2.101170' };
 with 'Dist::Zilla::Role::FileMunger' => { -version => '2.101170' };
 
+# TODO how do I fix this in pod-weaver? I think it's the __DATA__ section that screws it up?
+# Perl::Critic found these violations in "blib/lib/Dist/Zilla/Plugin/ApocalypseTests.pm":
+# [Documentation::RequirePodAtEnd] POD before __END__ at line 69, column 1.  (Severity: 1)
+## no critic ( RequirePodAtEnd )
+
 =attr allow
 
 This option will be passed directly to L<Test::Apocalypse> to control which sub-tests you want to run.
@@ -98,7 +103,7 @@ ___[ t/apocalypse.t ]___
 use strict; use warnings;
 
 use Test::More;
-eval "use Test::Apocalypse 0.10";
+eval "use Test::Apocalypse 1.000";
 if ( $@ ) {
 	plan skip_all => 'Test::Apocalypse required for validating the distribution';
 } else {
