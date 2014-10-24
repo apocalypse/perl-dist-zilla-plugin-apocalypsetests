@@ -107,9 +107,6 @@ eval "use Test::Apocalypse 1.000";
 if ( $@ ) {
 	plan skip_all => 'Test::Apocalypse required for validating the distribution';
 } else {
-	# hack for Kwalitee ( zany require format so DZP::AutoPrereq will not pick it up )
-	require 'Test/NoWarnings.pm'; require 'Test/Pod.pm'; require 'Test/Pod/Coverage.pm';
-
 	is_apocalypse_here( {
 		ALLOWDENY
 	} );

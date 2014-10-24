@@ -2,13 +2,11 @@ Revision history for Dist::Zilla::Plugin::ApocalypseTests
 
 {{$NEXT}}
 
-1.001
-	Released: 2011-03-06 00:37:26 UTC
+1.001	2011-03-06 00:37:26 UTC
 
 	Bumped the Test::Apocalypse prereq to 1.000
 
-1.000
-	Released: 2010-12-14 03:40:32 UTC
+1.000	2010-12-14 03:40:32 UTC
 
 	Converted to Dist::Zilla for the release process!
 
